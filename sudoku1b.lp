@@ -19,8 +19,22 @@ num(1..4).
 % Column constraints
 :- col(C), num(N), 2 { sudoku(R,C,N) : row(R) }.
 
+%subgrid constraints
+subgrid(X,Y,G) :-
+    row(X), col(Y),
+    G = 1, X<=2, Y<=2;
+subgrid(X,Y,G) :-
+    row(X), col(Y),
+    G = 2, X<=2, Y>2;
+subgrid(X,Y,G) :-
+    row(X), col(Y),
+    G = 3, X>2, Y<=2;
+subgrid(X,Y,G) :-
+    row(X), col(Y),
+    G = 4, X>2, Y>2.
+
 % Given clues
 sudoku(R,C,N) :- initial(R,C,N).
 
 % Show answers
-#show sudoku/3.
+#show subgrid/3.
