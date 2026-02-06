@@ -11,16 +11,16 @@ col(1..4).
 num(1..4).
 
 % One number per cell
-1 { cell(R,C,N) : num(N) } 1 :- row(R), col(C).
+1 { sudoku(R,C,N) : num(N) } 1 :- row(R), col(C).
 
 % Row constraints
-:- row(R), num(N), 2 { cell(R,C,N) : col(C) }.
+:- row(R), num(N), 2 { sudoku(R,C,N) : col(C) }.
 
 % Column constraints
-:- col(C), num(N), 2 { cell(R,C,N) : row(R) }.
+:- col(C), num(N), 2 { sudoku(R,C,N) : row(R) }.
 
 % Given clues
-cell(R,C,N) :- initial(R,C,N).
+sudoku(R,C,N) :- initial(R,C,N).
 
 % Show answers
 #show sudoku/3.
