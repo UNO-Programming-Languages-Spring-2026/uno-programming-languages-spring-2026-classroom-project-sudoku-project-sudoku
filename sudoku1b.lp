@@ -51,4 +51,4 @@ subgrid(R,C,G) :-
 sudoku(R,C,N) :- initial(R,C,N).
 
 % Show answers
-#show subgrid/3.
+#show sudoku/3.
