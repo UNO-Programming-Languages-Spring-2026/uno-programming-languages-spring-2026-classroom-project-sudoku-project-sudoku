@@ -20,22 +20,22 @@ num(1..4).
 :- col(C), num(N), 2 { sudoku(R,C,N) : row(R) }.
 
 %subgrid constraints
-subgrid(R,C,G) :-
+grid_of(R,C,G) :-
     row(R), col(C),
     G = 1, R<=2, C<=2.
-subgrid(R,C,G) :-
+grid_of(R,C,G) :-
     row(R), col(C),
     G = 2, R<=2, C>2.
-subgrid(R,C,G) :-
+grid_of(R,C,G) :-
     row(R), col(C),
     G = 3, R>2, C<=2.
-subgrid(R,C,G) :-
+grid_of(R,C,G) :-
     row(R), col(C),
     G = 4, R>2, C>2.
 
 subgrid(R,C,G) :-
     sudoku(R,C,N),
-    subgrid(R,C,G).
+    grid_of(R,C,G).
 
 % Given clues
 sudoku(R,C,N) :- initial(R,C,N).
