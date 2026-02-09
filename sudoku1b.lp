@@ -33,7 +33,7 @@ grid_of(R,C,G) :-
     row(R), col(C),
     G = 4, R>2, C>2.
 
-subgrid(R,C,G) :-
+subgrid(R,C,G,N) :-
     sudoku(R,C,N),
     grid_of(R,C,G).
 
@@ -41,4 +41,4 @@ subgrid(R,C,G) :-
 sudoku(R,C,N) :- initial(R,C,N).
 
 % Show answers
-#show subgrid/3.
+#show subgrid/4.
