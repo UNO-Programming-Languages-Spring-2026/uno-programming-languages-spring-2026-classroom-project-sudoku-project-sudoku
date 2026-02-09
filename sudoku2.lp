@@ -3,10 +3,6 @@ row(1..l).
 col(1..l).
 num(1..l).
 
-%determine block size
-blockSize(B) :- B*B=l.
-:- not blockSize(_).
-
 % One number per sudoku
 1 { sudoku(R,C,N) : num(N) } 1 :- row(R), col(C).
 
@@ -21,8 +17,8 @@ block(RB,CB) :- RB=1..3, CB=1..3.
 
 :- block(RB,CB), num(N),
    2 { sudoku(R,C,N) :
-        R = B*(RB-1)+1..B*RB,
-        C = B*(CB-1)+1..B*CB }.
+        R = 3*(RB-1)+1..3*RB,
+        C = 3*(CB-1)+1..3*CB }.
 
 % Given clues
 sudoku(R,C,N) :- initial(R,C,N).
