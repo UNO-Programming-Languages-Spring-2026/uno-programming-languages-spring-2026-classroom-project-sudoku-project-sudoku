@@ -20,7 +20,7 @@ grid(1..4).
 % Column constraints
 :- col(C), num(N), 2 { sudoku(R,C,N) : row(R) }.
 
-%subgrid constraints
+% Subgrid qualifiers
 grid_of(R,C,G) :-
     row(R), col(C),
     G = 1, R<=2, C<=2.
@@ -34,9 +34,12 @@ grid_of(R,C,G) :-
     row(R), col(C),
     G = 4, R>2, C>2.
 
+% Subgrid fills with sudoku values
 subgrid(R,C,G,N) :-
     sudoku(R,C,N),
     grid_of(R,C,G).
+
+% Subgrid single value constraint
 :- num(N), grid(G),
     2 { subgrid(R,C,G,N) }.
 
