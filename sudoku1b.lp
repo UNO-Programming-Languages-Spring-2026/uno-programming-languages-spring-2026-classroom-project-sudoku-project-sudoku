@@ -40,7 +40,7 @@ subgrid(R,C,G) :-
     grid_of(R,C,G).
 
 % Subgrid single value constraint
-:- num(N), grid(G),
+:- grid(G),
     2 { subgrid(R,C,G) }.
 
 % Given clues
